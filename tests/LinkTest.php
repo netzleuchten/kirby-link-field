@@ -1,6 +1,6 @@
 <?php
 
-namespace Oblik\LinkField;
+namespace Oblik\LinkLegacyField;
 
 use Kirby\Cms\App;
 use Kirby\Cms\Field;

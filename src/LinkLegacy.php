@@ -1,10 +1,10 @@
 <?php
 
-namespace Oblik\LinkField;
+namespace Oblik\LinkLegacyField;
 
 use Kirby\Toolkit\Html;
 
-class Link
+class LinkLegacy
 {
 	protected $data;
 	protected $page;

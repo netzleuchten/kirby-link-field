@@ -4,7 +4,7 @@
 			slot="options"
 			v-if="settings"
 			:icon="isMainScreen ? 'cog' : 'cancel'"
-			@click="screen = isMainScreen ? 'options' : 'link'"
+			@click="screen = isMainScreen ? 'options' : 'linklegacy'"
 		>
 			{{ isMainScreen ? $t("label.settings") : $t("label.close") }}
 		</k-button>
@@ -55,7 +55,7 @@ export default {
 	},
 	data() {
 		return {
-			screen: "link",
+			screen: "linklegacy",
 		};
 	},
 	computed: {
@@ -67,7 +67,7 @@ export default {
 			return { ...this.value };
 		},
 		isMainScreen() {
-			return this.screen === "link";
+			return this.screen === "linklegacy";
 		},
 	},
 	methods: {

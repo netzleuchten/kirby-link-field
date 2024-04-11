@@ -1,15 +1,15 @@
 <?php
 
-namespace Oblik\LinkField;
+namespace Oblik\LinkLegacyField;
 
 load([
-	'Oblik\\LinkField\\Link' => 'src/Link.php'
+	'Oblik\\LinkLegacyField\\LinkLegacy' => 'src/LinkLegacy.php'
 ], __DIR__);
 
 use Kirby\Cms\App;
 use Kirby\Data\Yaml;
 
-App::plugin('oblik/link-field', [
+App::plugin('oblik/linklegacy-field', [
 	'options' => [
 		'linkTypes' => [
 			'url',
@@ -38,7 +38,7 @@ App::plugin('oblik/link-field', [
 		]
 	],
 	'fields' => [
-		'link' => [
+		'linklegacy' => [
 			'mixins' => ['pagepicker', 'filepicker'],
 			'props' => [
 				'value' => function ($input = null) {
@@ -95,7 +95,7 @@ App::plugin('oblik/link-field', [
 				},
 				'linkTypes' => function ($value = null) {
 					if (!is_array($value)) {
-						$value = kirby()->option('oblik.link-field.linkTypes');
+						$value = kirby()->option('oblik.linklegacy-field.linkTypes');
 					}
 
 					return $value;
@@ -105,7 +105,7 @@ App::plugin('oblik/link-field', [
 						return null;
 					}
 
-					$config = kirby()->option('oblik.link-field.settings');
+					$config = kirby()->option('oblik.linklegacy-field.settings');
 
 					if (is_array($value) && is_array($config)) {
 						$value = array_replace_recursive($config, $value);
@@ -212,7 +212,7 @@ App::plugin('oblik/link-field', [
 			$value = $field->value();
 
 			if (is_string($value) && strpos($value, 'http') === 0) {
-				return new Link([
+				return new LinkLegacy([
 					'type' => 'url',
 					'value' => $value
 				]);
@@ -220,7 +220,7 @@ App::plugin('oblik/link-field', [
 
 			$data = $field->yaml();
 
-			return new Link($data);
+			return new LinkLegacy($data);
 		},
 		'toValidLink' => function ($field) {
 			$linkObject = $field->toLinkObject();
